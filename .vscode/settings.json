@@ -1,8 +1,15 @@
 {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "ms-python.black-formatter",
-    "editor.formatOnPaste": true,
-    "editor.semanticHighlighting.enabled": true,
-    "python.analysis.semanticTokensEnabled": true,
-    "python.analysis.typeCheckingMode": "basic"
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "ruff.lint.enable": true,
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.autoImportCompletions": true,
+  "editor.semanticHighlighting.enabled": true,
+  "python.analysis.diagnosticMode": "openFilesOnly",
+  "python.analysis.extraPaths": ["src"],
+  "editor.fontFamily": "'JetBrains Mono', Consolas, 'Courier New', monospace"
 }

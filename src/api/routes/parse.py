@@ -3,21 +3,21 @@ from ..schemas import CVParseRequest, JobParseRequest, CVParseResponse, JobParse
 from ...parsing.cv_parser import CVParser
 from ...parsing.job_parser import JobParser
 
-router = APIRouter(prefix="/parse", tags=["parse"])
+parse = APIRouter(prefix="/parse", tags=["parse"])
 
 cv_parser = CVParser()
 job_parser = JobParser()
 
 
-@router.post("/cv", response_model=CVParseResponse)
+@parse.post("/cv", response_model=CVParseResponse)
 def parse_cv(payload: CVParseRequest):
     if not payload.cv_text.strip():
         raise HTTPException(status_code=422, detail="cv_text is empty")
     result = cv_parser.parse(payload.id, payload.cv_text)
-    return CVParseResponse(**result)
+    return CVParseResponse(**result)  # ** -> dict unpacking
 
 
-@router.post("/job", response_model=JobParseResponse)
+@parse.post("/job", response_model=JobParseResponse)
 def parse_job(payload: JobParseRequest):
     if not payload.jd_text.strip():
         raise HTTPException(status_code=422, detail="jd_text is empty")

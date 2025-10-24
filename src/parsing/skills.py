@@ -44,7 +44,9 @@ def normalize_text(text: str) -> str:
 
 def _is_whole_word_present(t: str, token: str) -> bool:
     """Simple whole-word match using regex word boundaries."""
-    pattern = r"\b" + re.escape(token) + r"\b"
+    pattern = (
+        r"(?<!-)\b" + re.escape(token) + r"\b(?!-)"
+    )  # make sure skill-like or pre-skill structures are not allowed
     return re.search(pattern, t) is not None
 
 
